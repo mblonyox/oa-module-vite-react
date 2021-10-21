@@ -1,9 +1,12 @@
 import { Box } from "@mui/material";
+import { useAuth } from "oidc-react";
 import { PropsWithChildren } from "react";
 
 import ekemenkeu from "../images/ekemenkeu.svg";
 
 function RootLayout(props: PropsWithChildren<{}>) {
+  const { userData } = useAuth();
+
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <Box
@@ -68,7 +71,9 @@ function RootLayout(props: PropsWithChildren<{}>) {
               padding: "24px 0 64px",
             }}
           >
-            <Box sx={{ fontSize: "16px", fontWeight: "normal" }}>Sukirno</Box>
+            <Box sx={{ fontSize: "16px", fontWeight: "normal" }}>
+              {userData?.profile.name}
+            </Box>
             <Box
               sx={{
                 fontSize: "13px",
@@ -77,7 +82,7 @@ function RootLayout(props: PropsWithChildren<{}>) {
                 color: "rgba(255,255,255,.5)",
               }}
             >
-              198909072010121006
+              {userData?.profile.nip}
             </Box>
             <Box
               sx={{
@@ -91,8 +96,8 @@ function RootLayout(props: PropsWithChildren<{}>) {
               }}
             >
               <img
-                src="https://account.kemenkeu.go.id/manage/uploads/thumbnails/198909072010121006.jpg"
-                alt="Sukirno"
+                src={userData?.profile.gravatar}
+                alt={userData?.profile.name}
                 style={{
                   width: "72px",
                   height: "72px",

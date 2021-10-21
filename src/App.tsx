@@ -8,9 +8,9 @@ import HelpIcon from "@mui/icons-material/Help";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.VITE_APP_BASEPATH}>
       <DefaultLayout
-        title="Sample Module"
+        title={import.meta.env.VITE_APP_TITLE}
         menus={[
           {
             title: "Home",
