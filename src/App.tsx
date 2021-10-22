@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import Help from "./screens/Help";
-import Home from "./screens/Home";
+import Help from "./pages/Help";
+import Home from "./pages/Home";
 
 import HomeIcon from "@mui/icons-material/Home";
 import HelpIcon from "@mui/icons-material/Help";
@@ -26,11 +26,11 @@ function App() {
         ]}
       >
         <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
           <Route path="/help">
             <Help />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </AppLayout>
