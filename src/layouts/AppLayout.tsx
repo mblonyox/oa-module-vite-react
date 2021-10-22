@@ -35,13 +35,13 @@ interface NavMenu {
   icon: React.ElementType;
 }
 
-type DefaultLayoutProps = PropsWithChildren<{
+type AppLayoutProps = PropsWithChildren<{
   title: string;
   menus: (NavMenu | "spacer" | "divider")[];
   drawerWidth?: number;
 }>;
 
-function DefaultLayout(props: DefaultLayoutProps) {
+function AppLayout(props: AppLayoutProps) {
   const drawerWidth = props.drawerWidth ?? 240;
   const [open, setOpen] = useState(true);
 
@@ -86,11 +86,12 @@ function DefaultLayout(props: DefaultLayoutProps) {
         <Drawer
           variant="permanent"
           sx={{
-            width: open ? drawerWidth : theme => theme.spacing(6),
-            transition: theme => theme.transitions.create("width", {
-              easing: theme.transitions.easing.sharp,
-              duration: theme.transitions.duration.shortest
-            }),
+            width: open ? drawerWidth : (theme) => theme.spacing(6),
+            transition: (theme) =>
+              theme.transitions.create("width", {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.shortest,
+              }),
             flexShrink: 0,
             [`& .MuiDrawer-paper`]: {
               width: drawerWidth,
@@ -159,4 +160,4 @@ function DefaultLayout(props: DefaultLayoutProps) {
   );
 }
 
-export default DefaultLayout;
+export default AppLayout;

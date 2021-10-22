@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import DefaultLayout from "./layouts/DefaultLayout";
+import AppLayout from "./layouts/AppLayout";
 import Help from "./screens/Help";
 import Home from "./screens/Home";
 
@@ -9,7 +9,7 @@ import HelpIcon from "@mui/icons-material/Help";
 function App() {
   return (
     <Router basename={import.meta.env.VITE_APP_BASEPATH}>
-      <DefaultLayout
+      <AppLayout
         title={import.meta.env.VITE_APP_TITLE}
         menus={[
           {
@@ -33,7 +33,7 @@ function App() {
             <Help />
           </Route>
         </Switch>
-      </DefaultLayout>
+      </AppLayout>
     </Router>
   );
 }
